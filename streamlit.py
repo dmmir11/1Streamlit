@@ -5,7 +5,7 @@ import matplotlib as maplib
 import matplotlib.pyplot as plt
 import plotly.express as px
 
-st.title("IVAAAAAAAN Economic Indicators of countries*")
+st.title("Economic Indicators of countries*")
 st.sidebar.title("Economic Indicators of countries")
 st.markdown(" *This application is a Streamlit dashboard to show and analyse the economic indicators of Australia, Austria, Brazil, Germany, Russia, USA")
 st.sidebar.markdown(" This application is a Streamlit dashboard to show and analyse the economic indicators of certain countries")
