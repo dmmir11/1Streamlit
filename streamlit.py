@@ -129,7 +129,6 @@ if select == "Map":
             st.plotly_chart(fig)
       
 if st.sidebar.checkbox("Show Raw Data", False):
-    st.markdown("### Macroinformation of all countires*")
     raw_data = st.sidebar.radio('Indicator', ('GDP', 'Inflation rate ', 'Unemployment Rate '))
     if raw_data == "GDP":
         st.write(gdp_df)
