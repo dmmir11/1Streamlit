@@ -71,7 +71,7 @@ if select == "Line Graph":
     if len(indicator_choice) > 0 and len(choice) > 0:
         result_df = df_all[(df_all.Country.isin(choice)) & (df_all["Year"] >= year[0]) & (df_all["Year"] <= year[1])][[
            'GDP per capita', 'Inflation Rate (%)', 'Unemployment Rate (%)', "Year", "Country"]]
-
+        # st.write(indicator_choice, choice, year)
         for indicator in indicator_choice: 
             try: 
                 result_df[indicator] = result_df[indicator].map(lambda x:  x if isinstance(x, float) else float(x.replace('%', '')))
@@ -131,10 +131,14 @@ if select == "Map":
 if st.sidebar.checkbox("Show Raw Data", False):
     raw_data = st.sidebar.radio('Indicator', ('GDP per capita', 'Inflation Rate (%)', 'Unemployment Rate (%)'))
     if raw_data == "GDP per capita":
+        st.markdown('**GDP per capita of the given countries**:**')
         st.write(gdp_df)
     if raw_data == "Inflation Rate (%)":
+        st.markdown('**Inflation Rate (%) of the given countries**:**')
         st.write(inflation_df)
     if raw_data == "Unemployment Rate (%)":
+        # st.subheader("Unemployment Rate of the given countries**:")
+        st.markdown('**Unemployment Rate (%) of the given countries**:**')
         st.write(unemployment_df)
 
 
@@ -142,5 +146,5 @@ if st.sidebar.checkbox("Show Raw Data", False):
 st.sidebar.caption("<monospace color = grey;>*This web application is a Streamlit dashboard for displaying and analyzing information from Australia, Austria, Brazil, Germany, Russia, USA on their macroeconomic indicators</monospace>", unsafe_allow_html=True)
 st.sidebar.caption("<monospace color = grey;>** Australia, Austria, Brazil, Germany, Russia, USA </monospace>", unsafe_allow_html=True)
 st.sidebar.caption("<monospace color = grey;>*** GDP per capita, Inflation Rate, Unemployment Rate </monospace>", unsafe_allow_html=True)
-st.markdown(
-    " This web application is a Streamlit dashboard for displaying and analyzing information from certain countries on their macroeconomic indicators.")
+st.caption(
+    " *This web application is a Streamlit dashboard for displaying and analyzing information from certain countries on their macroeconomic indicators.")
