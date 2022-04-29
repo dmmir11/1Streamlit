@@ -65,12 +65,12 @@ if select == "Line Graph":
     choice = st.sidebar.multiselect('Pick countries', ('Australia', 'Austria', 'Brazil', 'Germany', 'Russia', 'USA'),
                                     key='0')
     st.sidebar.subheader("Select indicators")
-    indicator_choice = st.sidebar.multiselect('Pick indicators', ('GDP', 'Inflation rate ', 'Unemployment Rate '),
+    indicator_choice = st.sidebar.multiselect('Pick indicators', ('GDP per capita', 'Inflation Rate (%)', 'Unemployment Rate (%)'),
                                             key='0')
 
     if len(indicator_choice) > 0 and len(choice) > 0:
         result_df = df_all[(df_all.Country.isin(choice)) & (df_all["Year"] >= year[0]) & (df_all["Year"] <= year[1])][[
-           'GDP', 'Inflation rate ', 'Unemployment Rate ', "Year", "Country"]]
+           'GDP per capita', 'Inflation Rate (%)', 'Unemployment Rate (%)', "Year", "Country"]]
 
         for indicator in indicator_choice: 
             try: 
@@ -92,12 +92,12 @@ if select == "Bar Chart":
     choice = st.sidebar.multiselect('Pick countries', ('Australia', 'Austria', 'Brazil', 'Germany', 'Russia', 'USA'),
                                     key='0')
     st.sidebar.subheader("Select indicators")
-    indicator_choice = st.sidebar.multiselect('Pick indicators', ('GDP', 'Inflation rate ', 'Unemployment Rate '),
+    indicator_choice = st.sidebar.multiselect('Pick indicators', ('GDP per capita', 'Inflation Rate (%)', 'Unemployment Rate (%)'),
                                             key='0')
 
     if len(indicator_choice) > 0 and len(choice) > 0:
         result_df = df_all[(df_all.Country.isin(choice)) & (df_all["Year"] >= year[0]) & (df_all["Year"] <= year[1])][
-            ['GDP', 'Inflation rate ', 'Unemployment Rate ', "Year", "Country"]]
+            ['GDP per capita', 'Inflation Rate (%)', 'Unemployment Rate (%)', "Year", "Country"]]
 
         for indicator in indicator_choice: 
             try: 
@@ -110,7 +110,7 @@ if select == "Bar Chart":
 # Visualization Map
 if select == "Map":
     st.sidebar.subheader("Select indicators")
-    indicator_choice = st.sidebar.multiselect('Pick indicators', ('GDP', 'Inflation rate ', 'Unemployment Rate '),
+    indicator_choice = st.sidebar.multiselect('Pick indicators', ('GDP per capita', 'Inflation Rate (%)', 'Unemployment Rate (%)'),
                                             key='0')
 
     if len(indicator_choice) > 0:
@@ -129,18 +129,18 @@ if select == "Map":
             st.plotly_chart(fig)
       
 if st.sidebar.checkbox("Show Raw Data", False):
-    raw_data = st.sidebar.radio('Indicator', ('GDP', 'Inflation rate ', 'Unemployment Rate '))
-    if raw_data == "GDP":
+    raw_data = st.sidebar.radio('Indicator', ('GDP per capita', 'Inflation Rate (%)', 'Unemployment Rate (%)'))
+    if raw_data == "GDP per capita":
         st.write(gdp_df)
-    if raw_data == "Inflation rate ":
+    if raw_data == "Inflation Rate (%)":
         st.write(inflation_df)
-    if raw_data == "Unemployment Rate ":
+    if raw_data == "Unemployment Rate (%)":
         st.write(unemployment_df)
 
 
 
 st.sidebar.caption("<monospace color = grey;>*This web application is a Streamlit dashboard for displaying and analyzing information from Australia, Austria, Brazil, Germany, Russia, USA on their macroeconomic indicators</monospace>", unsafe_allow_html=True)
 st.sidebar.caption("<monospace color = grey;>** Australia, Austria, Brazil, Germany, Russia, USA </monospace>", unsafe_allow_html=True)
-st.sidebar.caption("<monospace color = grey;>*** GDP, Inflation Rate, Unemployment Rate </monospace>", unsafe_allow_html=True)
+st.sidebar.caption("<monospace color = grey;>*** GDP per capita, Inflation Rate, Unemployment Rate </monospace>", unsafe_allow_html=True)
 st.markdown(
     " This web application is a Streamlit dashboard for displaying and analyzing information from certain countries on their macroeconomic indicators.")
