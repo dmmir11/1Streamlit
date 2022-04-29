@@ -9,6 +9,7 @@ st.title("Macroeconomic information of the countries included in the study*")
 st.sidebar.title("Macroeconomic information of certain countries*")
 
 countries_df = pd.read_csv('info_countries.csv')
+countries_df.set_index('Country', inplace=True)
 st.sidebar.subheader("Latest information about the countries")
 # last_data = st.sidebar.button("Get the last information of all countries")
 if st.sidebar.button("Show the last information of certain countries**"):
@@ -46,9 +47,11 @@ data_all = [australia_df, austria_df, brazil_df, germany_df, usa_df, russia_df]
 df_all = pd.concat(data_all, ignore_index=True)
 
 gdp_df = pd.read_csv('GDP_.csv')
+gdp_df.set_index('Year', inplace=True)
 inflation_df = pd.read_csv('Inflation-rate_.csv')
+inflation_df.set_index('Year', inplace=True)
 unemployment_df = pd.read_csv('Unemployment-rate.csv')
-
+unemployment_df.set_index('Year', inplace=True)
 
 ## Visualization 
 st.sidebar.markdown("### Visualisation")
